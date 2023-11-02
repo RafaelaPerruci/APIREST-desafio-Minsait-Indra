@@ -3,8 +3,10 @@ package br.com.rafaelaperruci.APIRest.model;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
-@Entity
+@Entity 
+@Table (name = "pessoa")
 public class Pessoa {
     private long id;
     private String nome;
