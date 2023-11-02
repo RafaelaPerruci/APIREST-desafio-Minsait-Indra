@@ -2,6 +2,7 @@ package br.com.rafaelaperruci.APIRest.model;
 
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,10 +17,15 @@ public class Pessoa {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column (nullable = false)
     private String nome;
+    @Column (nullable = false)
     private String endereco;
+    @Column (nullable = false)
     private String cep;
+    @Column (nullable = false)
     private String cidade;
+    @Column (nullable = false)
     private String uf;
 
 
