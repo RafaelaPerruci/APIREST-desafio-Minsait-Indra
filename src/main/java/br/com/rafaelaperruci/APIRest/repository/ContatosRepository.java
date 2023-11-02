@@ -1,4 +1,7 @@
 package br.com.rafaelaperruci.APIRest.repository;
 
-public interface ContatosRepository {
+import org.springframework.data.jpa.repository.JpaRepository; 
+import br.com.rafaelaperruci.APIRest.model.Contatos;
+
+public interface ContatosRepository extends JpaRepository<Contatos, Long>{
 }
