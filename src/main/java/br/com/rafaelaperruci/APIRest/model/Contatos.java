@@ -2,6 +2,7 @@ package br.com.rafaelaperruci.APIRest.model;
 
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +14,7 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table (name = "contatos")
+@Table (name = "contato")
 
 public class Contatos {
     
@@ -25,8 +26,9 @@ public class Contatos {
     private int tipoContato;
     @Column (nullable = false)
     private String contato;
-    @ManyToOne 
-    @JoinColumn (name = "pessoa_id")
+    
+    @ManyToOne (cascade = CascadeType.ALL)
+    @JoinColumn (name = "pessoa_id", referencedColumnName = "id")
     private Pessoa pessoa;
 
     public Contatos(long id, int tipoContato, String contato, Pessoa pessoa) {

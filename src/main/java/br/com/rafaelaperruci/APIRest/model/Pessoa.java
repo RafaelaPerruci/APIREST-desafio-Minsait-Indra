@@ -1,7 +1,6 @@
 package br.com.rafaelaperruci.APIRest.model;
 
 import java.util.Objects;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,7 +25,7 @@ public class Pessoa {
     @Column (nullable = true)
     private String cidade;
     @Column (nullable = true)
-    private String uf;
+    private String uf; 
 
 
     public Pessoa(long id, String nome, String endereco, String cep, String cidade, String uf) {
@@ -35,7 +34,8 @@ public class Pessoa {
         this.endereco = endereco;
         this.cep = cep;
         this.cidade = cidade;
-        this.uf = uf;
+        this.uf = uf; 
+    
     }
 
 
