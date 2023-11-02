@@ -19,13 +19,13 @@ public class Pessoa {
 
     @Column (nullable = false)
     private String nome;
-    @Column (nullable = false)
+    @Column (nullable = true)
     private String endereco;
-    @Column (nullable = false)
+    @Column (nullable = true)
     private String cep;
-    @Column (nullable = false)
+    @Column (nullable = true)
     private String cidade;
-    @Column (nullable = false)
+    @Column (nullable = true)
     private String uf;
 
 
