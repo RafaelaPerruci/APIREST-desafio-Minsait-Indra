@@ -51,6 +51,6 @@ public class PessoaService implements PessoaServiceInterface{
 
     @Override
     public void delete(Long id) {
-
+         pessoaRepository.deleteById(id);
     }
 }
