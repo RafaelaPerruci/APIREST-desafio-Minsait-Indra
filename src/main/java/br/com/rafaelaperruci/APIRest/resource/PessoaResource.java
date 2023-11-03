@@ -22,9 +22,9 @@ public class PessoaResource {
 
     @GetMapping
     public ResponseEntity<List<Pessoa>> getAllPessoa() {
-        List<Pessoa> pessoas = pessoaService.getAll();
-        if (pessoas == null)
+        List<Pessoa> pessoa = pessoaService.getAll();
+        if (pessoa == null)
             return ResponseEntity.notFound().build();
-        return  ResponseEntity.ok(pessoas);
+        return  ResponseEntity.ok(pessoa);
     }
 }

@@ -38,6 +38,10 @@ public class Contatos {
         this.pessoa = pessoa;
     }
 
+    public Contatos(){
+        
+    }
+
     public long getId() {
         return id;
     }

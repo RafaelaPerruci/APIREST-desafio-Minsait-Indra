@@ -37,7 +37,9 @@ public class Pessoa {
         this.uf = uf; 
     
     }
-
+    public Pessoa(){
+        
+    }
 
     public long getId() {
         return id;
