@@ -1,7 +1,7 @@
 package br.com.rafaelaperruci.APIRest.resource;
 
-import br.com.rafaelaperruci.APIRest.maladireta.MalaDiretaDTO;
 import br.com.rafaelaperruci.APIRest.model.Pessoa;
+import br.com.rafaelaperruci.APIRest.model.PessoaMalaDireta;
 import br.com.rafaelaperruci.APIRest.service.interfaces.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,18 +38,21 @@ public class PessoaResource {
     }
 
     @GetMapping("/maladireta/{id}")
-    public ResponseEntity<MalaDiretaDTO> getPessoaForMalaDireta(@PathVariable Long id) {
-      
-        Pessoa pessoa = pessoaService.getById(id).orElse(null);
+    public ResponseEntity<PessoaMalaDireta> getPessoaMalaDireta(@PathVariable Long id) {
+        Optional<Pessoa> pessoaOptional = pessoaService.getById(id);
 
-        if (pessoa == null) {
+        if (pessoaOptional.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
-        String malaDireta = pessoa.getEndereco() + " - CEP: " + pessoa.getCep() + " - " + pessoa.getCidade() + "/" + pessoa.getUf();
-        MalaDiretaDTO dto = new MalaDiretaDTO(pessoa.getId(), pessoa.getNome(), malaDireta);
 
-        return ResponseEntity.ok(dto);
+        Pessoa pessoa = pessoaOptional.get();
+        String malaDireta = pessoa.getEndereco() + " - CEP: " + pessoa.getCep() + " - " + pessoa.getCidade() + "/" + pessoa.getUf();
+
+        PessoaMalaDireta pessoaMalaDireta = new PessoaMalaDireta(pessoa.getId(), pessoa.getNome(), malaDireta);
+
+        return ResponseEntity.ok(pessoaMalaDireta);
     }
+
 
     @PostMapping
     public ResponseEntity<Pessoa> save(@RequestBody Pessoa pessoa){
