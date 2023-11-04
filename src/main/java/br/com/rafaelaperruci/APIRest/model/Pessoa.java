@@ -28,6 +28,8 @@ public class Pessoa {
     private String uf; 
 
 
+
+
     public Pessoa(long id, String nome, String endereco, String cep, String cidade, String uf) {
         this.id = id;
         this.nome = nome;
@@ -38,9 +40,9 @@ public class Pessoa {
     
     }
     public Pessoa(){
-        
-    }
 
+    }
+    
     public long getId() {
         return id;
     }

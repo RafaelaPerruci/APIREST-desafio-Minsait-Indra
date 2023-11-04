@@ -1,5 +1,6 @@
 package br.com.rafaelaperruci.APIRest.resource;
 
+import br.com.rafaelaperruci.APIRest.maladireta.MalaDiretaDTO;
 import br.com.rafaelaperruci.APIRest.model.Pessoa;
 import br.com.rafaelaperruci.APIRest.service.interfaces.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,20 @@ public class PessoaResource {
         return ResponseEntity.ok(pessoa);
     }
 
+    @GetMapping("/maladireta/{id}")
+    public ResponseEntity<MalaDiretaDTO> getPessoaForMalaDireta(@PathVariable Long id) {
+      
+        Pessoa pessoa = pessoaService.getById(id).orElse(null);
+
+        if (pessoa == null) {
+            return ResponseEntity.notFound().build();
+        }
+        String malaDireta = pessoa.getEndereco() + " - CEP: " + pessoa.getCep() + " - " + pessoa.getCidade() + "/" + pessoa.getUf();
+        MalaDiretaDTO dto = new MalaDiretaDTO(pessoa.getId(), pessoa.getNome(), malaDireta);
+
+        return ResponseEntity.ok(dto);
+    }
+
     @PostMapping
     public ResponseEntity<Pessoa> save(@RequestBody Pessoa pessoa){
         Pessoa newPessoa = pessoaService.savePessoa(pessoa);
@@ -45,7 +60,7 @@ public class PessoaResource {
         
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Pessoa> update(@RequestBody Pessoa pessoa){
         Pessoa newPessoa = pessoaService.update(pessoa);
         if (newPessoa == null)

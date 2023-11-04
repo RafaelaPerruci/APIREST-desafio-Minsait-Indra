@@ -27,7 +27,7 @@ public class PessoaService implements PessoaServiceInterface{
     public Optional<Pessoa> getById(long id) {
         return pessoaRepository.findById(id);
     }
-
+   
     @Override
     public List<Pessoa> getAll() {
         return pessoaRepository.findAll();

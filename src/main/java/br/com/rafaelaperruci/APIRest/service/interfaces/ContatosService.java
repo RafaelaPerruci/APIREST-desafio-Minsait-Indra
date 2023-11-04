@@ -1,7 +1,6 @@
 package br.com.rafaelaperruci.APIRest.service.interfaces;
 
 import br.com.rafaelaperruci.APIRest.model.Contatos;
-import br.com.rafaelaperruci.APIRest.model.Pessoa;
 import br.com.rafaelaperruci.APIRest.repository.ContatosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
