@@ -1,6 +1,7 @@
 package br.com.rafaelaperruci.APIRest.service.interfaces;
 
 import br.com.rafaelaperruci.APIRest.model.Contatos;
+import br.com.rafaelaperruci.APIRest.model.Pessoa;
 import br.com.rafaelaperruci.APIRest.repository.ContatosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,9 +31,10 @@ public class ContatosService implements ContatosServiceInterface{
 
     @Override
     public List<Contatos> getAll() {
-        return contatosRepository.findAll();
+        return contatosRepository.findAll(); 
+        
     }
-
+   
     @Override
     public Contatos update(Contatos contatos) {
         Optional<Contatos> upContatos = contatosRepository.findById(contatos.getId());
